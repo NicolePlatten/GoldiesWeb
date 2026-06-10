@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goldie Digital | Premium Web Design & Development</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Premium Fonts: Inter + Playfair Display for luxury feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind Configuration for Premium Branding -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        goldie: {
+                            50: '#FFF9E8',
+                            100: '#FFEFB8',
+                            200: '#FFE280',
+                            300: '#FFD24D',
+                            400: '#FFC21A',
+                            500: '#E6A800', // Primary Gold
+                            600: '#CC9000',
+                            700: '#B37800',
+                            800: '#996000',
+                            900: '#7A4D00',
+                        },
+                        dark: '#0A0A0F',
+                        'dark-light': '#15151F',
+                        light: '#F8F9FC',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Playfair Display', 'serif'],
+                    },
+                    boxShadow: {
+                        'premium': '0 10px 50px -5px rgba(230, 168, 0, 0.15), 0 8px 20px -6px rgba(0, 0, 0, 0.05)',
+                        'premium-dark': '0 10px 50px -5px rgba(230, 168, 0, 0.1), 0 8px 20px -6px rgba(0, 0, 0, 0.3)',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-up': 'fadeUp 1s ease-out forwards',
+                        'fade-in': 'fadeIn 1.2s ease-out forwards',
+                        'scale-in': 'scaleIn 0.8s ease-out forwards',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 0.5) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.95)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        }
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+            .text-shadow-gold {
+                text-shadow: 0 2px 15px rgba(230, 168, 0, 0.25);
+            }
+            .bg-gradient-gold {
+                background: linear-gradient(135deg, #FFC21A 0%, #E6A800 50%, #B37800 100%);
+            }
+            .text-gradient-gold {
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;
+                background-image: linear-gradient(135deg, #FFC21A 0%, #E6A800 50%, #B37800 100%);
+            }
+            .scroll-smooth {
+                scroll-behavior: smooth;
+            }
+            .mask-image {
+                mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+            }
+            .text-balance {
+                text-wrap: balance;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light text-dark font-sans scroll-smooth overflow-x-hidden">
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-[9999] bg-dark flex items-center justify-center transition-opacity duration-700">
+        <div class="text-center">
+            <h2 class="text-[clamp(2.5rem,6vw,4rem)] font-display font-bold text-gradient-gold text-shadow-gold">Goldie Digital</h2>
+            <div class="w-24 h-1 bg-gradient-gold mx-auto mt-4 rounded-full animate-pulse"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 transition-all duration-500 py-4 px-6 lg:px-12" id="navbar">
+        <div class="container mx-auto flex items-center justify-between">
+            <a href="#" class="text-2xl md:text-3xl font-display font-bold text-gradient-gold text-shadow-gold">Goldie Digital</a>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center gap-8 lg:gap-10">
+                <a href="#home" class="font-medium hover:text-goldie-500 transition-colors duration-300 relative group">
+                    Home
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#services" class="font-medium hover:text-goldie-500 transition-colors duration-300 relative group">
+                    Services
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#work" class="font-medium hover:text-goldie-500 transition-colors duration-300 relative group">
+                    Our Work
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#pricing" class="font-medium hover:text-goldie-500 transition-colors duration-300 relative group">
+                    Pricing
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#about" class="font-medium hover:text-goldie-500 transition-colors duration-300 relative group">
+                    About
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#contact" class="bg-gradient-gold hover:shadow-premium text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:translate-y-[-2px]">
+                    Get in Touch
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-2xl" id="menuToggle">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="md:hidden fixed inset-0 bg-dark/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-500 flex flex-col items-center justify-center gap-8 text-white text-xl" id="mobileMenu">
+            <button class="absolute top-6 right-6 text-2xl" id="closeMenu"><i class="fa fa-times"></i></button>
+            <a href="#home" class="hover:text-goldie-400 transition-colors">Home</a>
+            <a href="#services" class="hover:text-goldie-400 transition-colors">Services</a>
+            <a href="#work" class="hover:text-goldie-400 transition-colors">Our Work</a>
+            <a href="#pricing" class="hover:text-goldie-400 transition-colors">Pricing</a>
+            <a href="#about" class="hover:text-goldie-400 transition-colors">About</a>
+            <a href="#contact" class="bg-gradient-gold px-8 py-3 rounded-lg font-semibold hover:shadow-premium-dark transition-all">Get in Touch</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center relative pt-20 overflow-hidden">
+        <div class="absolute top-0 right-0 w-[60vw] h-[80vh] bg-goldie-100/30 rounded-bl-[10rem] -z-10 mask-image"></div>
+        <div class="absolute bottom-0 left-0 w-[40vw] h-[60vh] bg-goldie-50/50 rounded-tr-[8rem] -z-10"></div>
+        
+        <div class="container mx-auto px-6 lg:px-12 py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="inline-block px-4 py-2 bg-goldie-50 text-goldie-700 rounded-full font-semibold text-sm animate-fade-in">
+                        Premium Web Design & Development
+                    </div>
+                    <h1 class="text-[clamp(2.8rem,6vw,4.5rem)] font-display font-bold leading-[1.1] text-shadow animate-fade-up text-balance" style="animation-delay: 0.2s">
+                        Crafting Digital <span class="text-gradient-gold text-shadow-gold">Excellence</span> for Your Brand
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-700 leading-relaxed animate-fade-up" style="animation-delay: 0.4s">
+                        We build stunning, high-performance websites that elevate businesses, engage audiences, and drive measurable growth. From concept to launch — we bring your vision to life.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-4 animate-fade-up" style="animation-delay: 0.6s">
+                        <a href="#contact" class="bg-gradient-gold hover:shadow-premium text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:translate-y-[-3px]">
+                            Start Your Project
+                        </a>
+                        <a href="#work" class="border-2 border-goldie-500 text-goldie-600 hover:bg-goldie-50 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300">
+                            View Our Work
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative animate-float" style="animation-delay: 0.8s">
+                    <div class="absolute -inset-4 bg-gradient-gold rounded-2xl blur-2xl opacity-20"></div>
+                    <img src="https://images.unsplash.com/photo-1507238691740-1875a6d4e086?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Premium Web Design" class="relative rounded-2xl shadow-premium w-full h-auto object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-white relative">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-[clamp(2rem,4vw,3rem)] font-display font-bold mb-4">Our <span class="text-gradient-gold">Services</span></h2>
+                <p class="text-gray-600 text-lg">Tailored digital solutions designed to position your business at the forefront of your industry.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+                <!-- Service 1 -->
+                <div class="bg-light rounded-2xl p-8 shadow-premium hover:shadow-premium-dark transition-all duration-500 hover:translate-y-[-8px] group">
+                    <div class="w-16 h-16 bg-goldie-100 text-goldie-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-gradient-gold group-hover:text-white transition-all duration-300">
+                        <i class="fa fa-laptop"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Custom Web Design</h3>
+                    <p class="text-gray-600 mb-4">Bespoke, visually striking designs tailored to your brand identity, ensuring a unique and memorable user experience.</p>
+                    <a href="#" class="text-goldie-500 font-medium inline-flex items-center group-hover:underline">
+                        Learn More <i class="fa fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-light rounded-2xl p-8 shadow-premium hover:shadow-premium-dark transition-all duration-500 hover:translate-y-[-8px] group">
+                    <div class="w-16 h-16 bg-goldie-100 text-goldie-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-gradient-gold group-hover:text-white transition-all duration-300">
+                        <i class="fa fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Web Development</h3>
+                    <p class="text-gray-600 mb-4">Robust, scalable, and high-performance development using modern technologies for seamless functionality and speed.</p>
+                    <a href="#" class="text-goldie-500 font-medium inline-flex items-center group-hover:underline">
+                        Learn More <i class="fa fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-light rounded-2xl p-8 shadow-premium hover:shadow-premium-dark transition-all duration-500 hover:translate-y-[-8px] group">
+                    <div class="w-16 h-16 bg-goldie-100 text-goldie-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-gradient-gold group-hover:text-white transition-all duration-300">
+                        <i class="fa fa-mobile"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Responsive Design</h3>
+                    <p class="text-gray-600 mb-4">Flawless display across every device — mobile, tablet, and desktop — ensuring accessibility and consistency everywhere.</p>
+                    <a href="#" class="text-goldie-500 font-medium inline-flex items-center group-hover:underline">
+                        Learn More <i class="fa fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-light rounded-2xl p-8 shadow-premium hover:shadow-premium-dark transition-all duration-500 hover:translate-y-[-8px] group">
+                    <div class="w-16 h-16 bg-goldie-100 text-goldie-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-gradient-gold group-hover:text-white transition-all duration-300">
+                        <i class="fa fa-shopping-cart"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">E-Commerce Solutions</h3>
+                    <p class="text-gray-600 mb-4">Powerful online stores with secure payment gateways, inventory management, and optimized conversion paths.</p>
+                    <a href="#" class="text-goldie-500 font-medium inline-flex items-center group-hover:underline">
+                        Learn More <i class="fa fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="bg-light rounded-2xl p-8 shadow-premium hover:shadow-premium-dark transition-all duration-500 hover:translate-y-[-8px] group">
+                    <div class="w-16 h-16 bg-goldie-100 text-goldie-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-gradient-gold group-hover:text-white transition-all duration-300">
+                        <i class="fa fa-search"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">SEO Optimisation</h3>
+                    <p class="text-gray-600 mb-4">Strategic structure and content built to rank highly in search results, driving organic traffic and visibility.</p>
+                    <a href="#" class="text-goldie-500 font-medium inline-flex items-center group-hover:underline">
+                        Learn More <i class="fa fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="bg-light rounded-2xl p-8 shadow-premium hover:shadow-premium-dark transition-all duration-500 hover:translate-y-[-8px] group">
+                    <div class="w-16 h-16 bg-goldie-100 text-goldie-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-gradient-gold group-hover:text-white transition-all duration-300">
+                        <i class="fa fa-life-ring"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Ongoing Support</h3>
+                    <p class="text-gray-600 mb-4">Reliable maintenance, updates, and support to keep your website secure, fast, and performing at its best.</p>
+                    <a href="#" class="text-goldie-500 font-medium inline-flex items-center group-hover:underline">
+                        Learn More <i class="fa fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="work" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-[clamp(2rem,4vw,3rem)] font-display font-bold mb-4">Featured <span class="text-gradient-gold">Work</span></h2>
+                <p class="text-gray-600 text-lg">A selection of premium projects we’ve crafted for clients across industries.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-premium">
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Luxury Brand Website" class="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+                        <h3 class="text-white text-xl font-bold">Luxury Fashion House</h3>
+                        <p class="text-goldie-200 text-sm mb-3">Web Design • Development • E-Commerce</p>
+                        <a href="#" class="text-white inline-flex items-center text-sm font-medium hover:text-goldie-300 transition-colors">
+                            View Project <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-premium">
+                    <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Corporate Business Site" class="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+                        <h3 class="text-white text-xl font-bold">Global Financial Firm</h3>
+                        <p class="text-goldie-200 text-sm mb-3">Corporate Design • CMS • SEO</p>
+                        <a href="#" class="text-white inline-flex items-center text-sm font-medium hover:text-goldie-300 transition-colors">
+                            View Project <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-premium">
+                    <img src="https://images.unsplash.com/photo-1551650975-87de1d81166c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Creative Agency Website" class="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+                        <h3 class="text-white text-xl font-bold">Creative Design Studio</h3>
+                        <p class="text-goldie-200 text-sm mb-3">Portfolio • Animation • Interactive Design</p>
+                        <a href="#" class="text-white inline-flex items-center text-sm font-medium hover:text-goldie-300 transition-colors">
+                            View Project <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-16">
+                <a href="#" class="inline-block border-2 border-goldie-500 text-goldie-600 hover:bg-goldie-50 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-premium">
+                    View All Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 bg-white relative">
+        <div class="absolute top-0 left-0 w-full h-full bg-goldie-50/20 -z-10 rounded-tr-[8rem] rounded-bl-[8rem]"></div>
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-[clamp(2rem,4vw,3rem)] font-display font-bold mb-4">Transparent <span class="text-gradient-gold">Pricing</span></h2>
+                <p class="text-gray-600 text-lg">Packages tailored to your business size and goals — no hidden fees, just premium quality.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Basic Plan -->
+                <div class="bg-white rounded-2xl shadow-premium hover:shadow-premium-dark transition-all duration-500 hover:translate-y-[-8px] overflow-hidden">
+                    <div class="p-8 border-b border-gray-100">
+                        <h3 class="text-2xl font-bold mb-2">Starter</h3>
+                        <div class="flex items-baseline mb-4">
+                            <span class="text-4xl font-bold text-gradient-gold">£999</span>
+                            <span class="text-gray-500 ml-2">one-off</span>
+                        </div>
+                        <p class="text-gray-600">Perfect for small businesses & startups</p>
+                    </div>
+                    <div class="p-8">
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center gap-3">
+                                <i class="fa fa-check text-goldie-500"></i>
+                                <span>Up to 5 Custom Pages</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa fa-check text-goldie-500"></i>
+                                <span>Mobile Responsive Design</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa fa-check text-goldie-500"></i>
+                                <span>Basic SEO Setup</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa fa-check text-goldie-500"></i>
+                                <span>Contact Form Integration</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-400">
+                                <i class="fa fa-times"></i>
+                                <span>Advanced Animations</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-400">
+                                <i class="fa fa-times"></i>
+                                <span>E-Commerce Functionality</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="block text-center border-2 border-goldie-500 text-goldie-600 hover:bg-goldie-50 px-6 py-3 rounded-lg font-semibold transition-all duration-300">
+                            Choose Plan
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="bg-white rounded-2xl shadow-premium-dark transform scale-[1.05] z-10 overflow-hidden border-2 border-goldie-400 relative">
+                    <div class="absolute top-0 right-0 bg-gradient-gold text-white px-4 py-1 text-sm font-semibold">Most Popular</div>
+                    <div class="p-8 border-b border-gray-100">
+                        <h3 class="text-2xl font-bold mb-2">Premium</h3>
+                        <div class="flex items-baseline mb-4">
+                            <span class="text-4xl font-bold text-gradient-gold">£2,499</span>
+                            <span class="text-gray-500 ml-2">one-off</span>
+                        </div>
+                        <p class="text-gray-600">Ideal for growing businesses & brands</p>
+                    </div>
+                    <div class="p-8">
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center gap-3">
+                                <i class="fa fa-check text-goldie-500"></i>
+                                <span>Up to 12 Custom Pages</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa fa-check text-goldie-500"></i>
+                                <span>Premium Responsive Design</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa fa-check text-goldie-500"></i>
+                                <span>Advanced SEO & Speed Optimisation</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa fa-check text-goldie-500"></i>
+                                <span>Custom Animations & Effects</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa fa-check text-goldie-500"></i>
+                                <span>Blog / CMS Integration</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa fa-check text-goldie-500"></i>
+                                <span>1 Month Free Support</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="block text-center bg-gradient-gold hover:shadow-premium text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:translate-y-[-2px]">
+                            Choose Plan
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Custom Plan -->
+                <div class="bg-white rounded-2xl shadow-premium hover:shadow-premium-dark transition-all duration-500 hover:translate-y-[-8px] overflow-hidden">
+                    <div class="p-8 border-b border-gray-100">
+                        <h3 class="text-2xl font-bold mb-2">Custom</h3>
+                        <div class="flex items-baseline mb-4">
+                            <span class="text-4xl font-bold text-gradient-gold">Custom</span>
+                            <span class="text-gray-500 ml-2">quote</span>
+                        </div>
+                        <p class="text-gray-600">For large projects & complex requirements</p>
+                    </div>
+                    <div class="p-8">
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center gap-3">
+                                <i class="fa fa-check text-goldie-500"></i>
+                                <span>Unlimited Pages & Features</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa fa-check text-goldie-500"></i>
+                                <span>Tailored Design & Development</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa fa-check text-goldie-500"></i>
+                                <span>Full E-Commerce Solutions</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa fa-check text-goldie-500"></i>
+                                <span>Advanced Integrations & APIs</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa fa-check text-goldie-500"></i>
+                                <span>Priority Support & Maintenance</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa fa-check text-goldie-500"></i>
+                                <span>Long-Term Partnership</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="block text-center border-2 border-goldie-500 text-goldie-600 hover:bg-goldie-50 px-6 py-3 rounded-lg font-semibold transition-all duration-300">
+                            Get Quote
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-[clamp(2rem,4vw,3rem)] font-display font-bold mb-4">What Our <span class="text-gradient-gold">Clients Say</span></h2>
+                <p class="text-gray-600 text-lg">Trusted by businesses across the UK — delivering results that speak for themselves.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-premium hover:shadow-premium-dark transition-all duration-300 hover:translate-y-[-5px]">
+                    <div class="text-goldie-400 text-2xl mb-4">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 italic mb-6 text-lg">
+                        "Goldie Digital transformed our online presence completely. Their attention to detail, creativity, and technical skill is outstanding. Our new website has already increased our leads by 60%!"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://ui-avatars.com/api/?name=Sarah+Jenkins&background=E6A800&color=fff&size=80" alt="Sarah Jenkins" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Sarah Jenkins</h4>
+                            <p class="text-gray-600 text-sm">CEO, Luxe Boutique</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-premium hover:shadow-premium-dark transition-all duration-300 hover:translate-y-[-5px]">
+                    <div class="text-goldie-400 text-2xl mb-4">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 italic mb-6 text-lg">
+                        "Professional, responsive, and incredibly talented. Goldie Digital delivered exactly what we needed — a sleek, fast, and high-converting website that perfectly represents our brand quality."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://ui-avatars.com/api/?name=James+Harrison&background=E6A800&color=fff&size=80" alt="James Harrison" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">James Harrison</h4>
+                            <p class="text-gray-600 text-sm">Director, Harrison Finance</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-premium hover:shadow-premium-dark transition-all duration-300 hover:translate-y-[-5px]">
+                    <div class="text-goldie-400 text-2xl mb-4">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 italic mb-6 text-lg">
+                        "From concept to launch, every step was seamless. They understood our vision and built a website that exceeded all expectations. The ongoing support is also first-class — highly recommended!"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://ui-avatars.com/api/?name=Emma+Lewis&background=E6A800&color=fff&size=80" alt="Emma Lewis" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Emma Lewis</h4>
+                            <p class="text-gray-600 text-sm">Founder, Creative Studio</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <div class="absolute -top-6 -left-6 w-32 h-32 bg-goldie-200/40 rounded-full -z-10"></div>
+                    <div class="absolute -bottom-6 -right-6 w-40 h-40 bg-goldie-100/50 rounded-full -z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Goldie Digital Team" class="rounded-2xl shadow-premium w-full h-auto">
+                </div>
+
+                <div class="space-y-6">
+                    <h2 class="text-[clamp(2rem,4vw,3rem)] font-display font-bold">About <span class="text-gradient-gold">Goldie Digital</span></h2>
+                    <p class="text-gray-700 text-lg leading-relaxed">
+                        Based in Birmingham, UK, Goldie Digital is a premium web design and development agency dedicated to creating exceptional digital experiences. We blend artistic design with technical excellence to deliver websites that not only look stunning but perform brilliantly.
+                    </p>
+                    <p class="text-gray-700 text-lg leading-relaxed">
+                        Our mission is simple: to elevate businesses through thoughtful, strategic digital design. We treat every project as a partnership, ensuring your unique vision, goals, and brand identity are at the heart of everything we build.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 pt-4">
+                        <div>
+                            <h4 class="text-3xl font-bold text-gradient-gold">100+</h4>
+                            <p class="text-gray-600">Projects Completed</p>
+                        </div>
+                        <div>
+                            <h4 class="text-3xl font-bold text-gradient-gold">98%</h4>
+                            <p class="text-gray-600">Client Satisfaction</p>
+                        </div>
+                        <div>
+                            <h4 class="text-3xl font-bold text-gradient-gold">12+</h4>
+                            <p class="text-gray-600">Years Experience</p>
+                        </div>
+                        <div>
+                            <h4 class="text-3xl font-bold text-gradient-gold">50+</h4>
+                            <p class="text-gray-600">Industry Awards</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-gray-50 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-goldie-50/30 -z-10 rounded-br-[10rem]"></div>
+        
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-premium p-8 md:p-12">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-[clamp(2rem,4vw,3rem)] font-display font-bold mb-6">Let's Start Your <span class="text-gradient-gold">Project</span></h2>
+                        <p class="text-gray-700 text-lg mb-8">
+                            Ready to elevate your online presence? Get in touch with us today to discuss your vision, goals, and how Goldie Digital can help you achieve digital excellence.
+                        </p>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-goldie-100 text-goldie-600 rounded-lg flex items-center justify-center text-lg">
+                                    <i class="fa fa-map-marker"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold">Location</h5>
+                                    <p class="text-gray-600">Birmingham, West Midlands, United Kingdom</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-goldie-100 text-goldie-600 rounded-lg flex items-center justify-center text-lg">
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold">Email</h5>
+                                    <p class="text-gray-600">Goldiedigital@outlook.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-goldie-100 text-goldie-600 rounded-lg flex items-center justify-center text-lg">
+                                    <i class="fa fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold">Phone / WhatsApp</h5>
+                                    <p class="text-gray-600">+44 7713 197732</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-goldie-100 text-goldie-600 flex items-center justify-center hover:bg-gradient-gold hover:text-white transition-all duration-300">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-goldie-100 text-goldie-600 flex items-center justify-center hover:bg-gradient-gold hover:text-white transition-all duration-300">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-goldie-100 text-goldie-600 flex items-center justify-center hover:bg-gradient-gold hover:text-white transition-all duration-300">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-goldie-100 text-goldie-600 flex items-center justify-center hover:bg-gradient-gold hover:text-white transition-all duration-300">
+                                <i class="fa fa-behance"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <form class="space-y-5">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Name</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-goldie-400 focus:border-transparent transition-all" placeholder="Your full name">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Email</label>
+                                <input type="email" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-goldie-400 focus:border-transparent transition-all" placeholder="Your email address">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Subject</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-goldie-400 focus:border-transparent transition-all" placeholder="Project subject">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea rows="5" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-goldie-400 focus:border-transparent transition-all" placeholder="Tell us about your project..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-gradient-gold hover:shadow-premium text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:translate-y-[-2px]">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Direct Contact Section -->
+    <section class="py-16 bg-gradient-gold text-white">
+        <div class="container mx-auto px-6 lg:px-12 text-center">
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-display font-bold mb-8 text-shadow">Get In Touch Directly</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <!-- Call -->
+                <a href="tel:+447713197732" class="bg-white/10 backdrop-blur-md rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover:translate-y-[-5px]">
+                    <i class="fa fa-phone text-3xl mb-3"></i>
+                    <h3 class="text-xl font-semibold mb-2">Call Us</h3>
+                    <p class="text-lg">+44 7713 197732</p>
+                </a>
+
+                <!-- WhatsApp -->
+                <a href="https://wa.me/447713197732" target="_blank" class="bg-white/10 backdrop-blur-md rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover:translate-y-[-5px]">
+                    <i class="fa fa-whatsapp text-3xl mb-3"></i>
+                    <h3 class="text-xl font-semibold mb-2">WhatsApp</h3>
+                    <p class="text-lg">+44 7713 197732</p>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:Goldiedigital@outlook.com" class="bg-white/10 backdrop-blur-md rounded-2xl p-6 hover:bg-white/20 transition-all duration-3
+                                  <!-- Email -->
+                <a href="mailto:Goldiedigital@outlook.com" class="bg-white/10 backdrop-blur-md rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover:translate-y-[-5px]">
+                    <i class="fa fa-envelope text-3xl mb-3"></i>
+                    <h3 class="text-xl font-semibold mb-2">Email Us</h3>
+                    <p class="text-lg">Goldiedigital@outlook.com</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-display font-bold text-gradient-gold mb-4">Goldie Digital</h3>
+                    <p class="text-gray-400 mb-4">
+                        Premium web design & development agency based in Birmingham, UK. Crafting digital excellence for businesses worldwide.
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-9 h-9 rounded-full bg-dark-light text-gray-300 flex items-center justify-center hover:bg-goldie-500 hover:text-white transition-all">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-dark-light text-gray-300 flex items-center justify-center hover:bg-goldie-500 hover:text-white transition-all">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-dark-light text-gray-300 flex items-center justify-center hover:bg-goldie-500 hover:text-white transition-all">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-dark-light text-gray-300 flex items-center justify-center hover:bg-goldie-500 hover:text-white transition-all">
+                            <i class="fa fa-behance"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-goldie-400 transition-colors">Home</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-goldie-400 transition-colors">Services</a></li>
+                        <li><a href="#work" class="text-gray-400 hover:text-goldie-400 transition-colors">Our Work</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-goldie-400 transition-colors">Pricing</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-goldie-400 transition-colors">About</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-goldie-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-goldie-400 transition-colors">Web Design</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-goldie-400 transition-colors">Web Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-goldie-400 transition-colors">E-Commerce</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-goldie-400 transition-colors">SEO Optimisation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-goldie-400 transition-colors">Support & Maintenance</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center gap-2">
+                            <i class="fa fa-map-marker"></i>
+                            <span>Birmingham, West Midlands, UK</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa fa-phone"></i>
+                            <span>+44 7713 197732</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa fa-whatsapp"></i>
+                            <span>+44 7713 197732</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa fa-envelope"></i>
+                            <span>Goldiedigital@outlook.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-dark-light pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2026 Goldie Digital. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 700);
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-premium');
+                navbar.classList.remove('py-4');
+                navbar.classList.add('py-3');
+            } else {
+                navbar.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-premium');
+                navbar.classList.remove('py-3');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.remove('translate-x-full');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('translate-x-full');
+        });
+
+        // Close mobile menu when link is clicked
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+            });
+        });
+    </script>
+</body>
+</html>
